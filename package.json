@@ -10,8 +10,9 @@
     "build:webpack": "webpack --mode=production"
   },
   "dependencies": {
-    "vue": "^3.0.11",
     "@vue/cli-service": "^5.0.0-beta.1",
+    "netlify-cli": "^3.31.5",
+    "vue": "^3.0.11",
     "vue-loader": "^16.0.0"
   },
   "devDependencies": {
