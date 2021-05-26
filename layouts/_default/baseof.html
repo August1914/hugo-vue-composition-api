@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>{{ .Title }}</title>
-  <link rel="stylesheet" href="/assets/main.css">
-  <script src="/assets/bundle.js"></script>
+    <title>{{ .Title }}</title>
+
+    <link rel="stylesheet" href="/assets/main.css">
+
 </head>
 <body>
-  <main id="content">
-    {{- block "main" .}}{{- end}}
-  </main>
+
+<main id="content">
+    {{ block "main". }}{{ end }}
+    <h3>AAAAA</h3>
+
+</main>
+<div id="app">
+    <h3>[[label]]</h3>
+    <card></card>
+</div>
+<script src="/assets/bundle.js"></script>
 </body>
 </html>
