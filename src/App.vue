@@ -4,72 +4,38 @@
                 @search-by="setQuery" />
         <br/>
         <BookList
-                :books="state.filteredBooks" />
+                :books="state.filteredBooks"
+                @select="selectBook"/>
         <BookDetails
-                :book="state.selectedBook" />
+                :book="state.selectedBook"/>
     </div>
 </template>
 
 <script>
-import { reactive, computed } from 'vue';
-import BookList from './components/BookList.vue';
-import BookSearch from './components/BookSearch.vue';
-import BookDetails from './components/BookDetails.vue';
+    import { provide } from 'vue';
+    import BookSearch from './components/BookSearch.vue';
+    import BookList from './components/BookList.vue';
+    import BookDetails from './components/BookDetails.vue';
+    import BookStore from  './business/bookStore.js';
 
-const books = [
-    {
-        title: "The Cherry Orchard",
-        author: "Anton Chekov"
-    },
-    {
-        title: "Ivanov",
-        author: "Anton Chekov"
-    }];
+    export default {
+        components: {
+            BookSearch,
+            BookList,
+            BookDetails
+        },
+        setup() {
+            const bookStore = BookStore();
+            provide("bookStore", bookStore);
+            const { state, setQuery, selectBook, fetchBooks } = bookStore;
 
-function isInQuery(query){
-    return function (book){
-        return (
-            (!query.title || book
-                .title.toLowerCase()
-                .includes(query.title.toLowerCase())) &&
-            (!query.author || book
-                .author.toLowerCase()
-                .includes(query.author.toLowerCase())));
-    };
-}
+            fetchBooks();
 
-
-export default {
-    components: {
-        BookSearch,
-        BookList,
-        BookDetails
-    },
-
-    setup() {
-        const state = reactive({
-            query: {},
-            filteredBooks: computed(filterBooks),
-            selectedId: 0
-        });
-
-        function setQuery(query){
-            state.query = query;
-        }
-
-        function selectBook(id){
-            state.selectedBook = {id}
-        }
-
-        function filterBooks(){
-            return books.filter(isInQuery(state.query));
-        }
-
-        return {
-            state,
-            setQuery,
-            selectBook
+            return {
+                state,
+                setQuery,
+                selectBook
+            }
         }
     }
-}
 </script>

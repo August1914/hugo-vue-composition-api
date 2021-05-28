@@ -5,12 +5,12 @@ function toJson(response){
 }
 
 function fetchBooks(){
-    return fetch(`${baseUrl}/src/books/`)
+    return fetch(`${baseUrl}/books/`)
         .then(toJson)
 }
 
 function fetchBook(id){
-    return fetch(`${baseUrl}/src/books/${id}`)
+    return fetch(`${baseUrl}/books/${id}`)
         .then(toJson)
 }
 

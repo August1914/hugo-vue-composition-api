@@ -1,5 +1,5 @@
 import { reactive, computed } from 'vue';
-import api from '@/api/booksAPI';
+import api from '/src/api/booksAPI';
 
 function isInQuery(query){
     return function(book){
