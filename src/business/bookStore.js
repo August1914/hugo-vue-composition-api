@@ -3,11 +3,12 @@ import api from '/src/api/booksAPI';
 
 function isInQuery(query){
     return function(book){
+        console.log(book);
         return (
             (!query.title || book
                 .title.toLowerCase()
                 .includes(query.title.toLowerCase())) &&
-            (!query.author || book
+            (!query.author || book.author && book
                 .author.toLowerCase()
                 .includes(query.author.toLowerCase())));
     };

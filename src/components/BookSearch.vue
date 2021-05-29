@@ -34,6 +34,7 @@
                     author: author.value
                 }
                 context.emit('search-by', query);
+                console.log('Booksearch.vue');
                 console.log(query);
             }
 

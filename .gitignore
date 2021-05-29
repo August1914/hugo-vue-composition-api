@@ -1,6 +1,9 @@
 public
 node_modules
 static/assets
+package-lock.json
+src/.DS_Store
+.DS_Store
 
 # Local Netlify folder
 .netlify
